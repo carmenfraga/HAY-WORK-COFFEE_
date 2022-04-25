@@ -26,18 +26,17 @@ const userSchema = new Schema(
     },
     description: {
       type: String,
-      default: 'There is no description for the moment'
+      default: 'No description available'
     },
     role: {
       type: String,
       enum: ['ADMIN', 'USER'],
       default: 'USER'
     },
-    coffee:
-      [{                                  // El corchete es necesario porque es un array de ObjectIDs
-        type: Schema.Types.ObjectId,
-        ref: 'Coffee'                             // Nombre del modelo referenciado
-      }],
+    favCoffees: [{                                  // El corchete es necesario porque es un array de ObjectIDs
+      type: Schema.Types.ObjectId,
+      ref: 'Coffee'
+    }],
 
   },
   {
