@@ -19,7 +19,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Password is mandatory']
     },
-    avatar: {
+    avatar: {         //or profileImg
       type: String,
       default: 'https://i.stack.imgur.com/l60Hf.png'
       //cloudinary path

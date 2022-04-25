@@ -27,6 +27,20 @@ app.locals.appTitle = projectName
 const index = require("./routes/index.routes");
 app.use("/", index);
 
+const authRoutes = require("./routes/auth.routes");
+app.use("/", authRoutes);
+
+// const apiRoutes = require('./routes/api.routes');
+// app.use("/api", apiRoutes);
+
+const coffeeRoutes = require('./routes/coffees.routes');
+app.use("/", coffeeRoutes);
+
+// const userRoutes = require('./routes/user.routes')
+// app.use("/", userRoutes)
+
+
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

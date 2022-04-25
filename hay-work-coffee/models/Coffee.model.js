@@ -10,7 +10,7 @@ const coffeeSchema = new Schema(
             required: [true, 'Name is required']
 
         },
-        coffeeImg: {
+        coffeeImg: {      //original photo
             type: String,
             default: 'https://i.stack.imgur.com/l60Hf.png'
             //cloudinary path
@@ -19,6 +19,8 @@ const coffeeSchema = new Schema(
             type: {
                 type: String
             },
+            city: String,
+            country: String,
             coordinates: [Number],
             address: String
         },
