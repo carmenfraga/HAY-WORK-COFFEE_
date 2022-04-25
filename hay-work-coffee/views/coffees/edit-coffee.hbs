@@ -2,32 +2,32 @@
 
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2>Add a New Coffeeshop</h2>
-            <form action="/coffees/new" method="POST">
+            <h2>Edit {{coffees.name}}</h2>
+            <form action="/coffees/{{coffees.id}}/edit" method="POST">
 
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="name" name="name" value="{{coffees.name}}">
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
-                    <input type="text" class="form-control" id="image" image="image">
+                    <input type="text" class="form-control" id="image" image="image" value="{{coffees.image}}">
                 </div>
                 <div class="mb-3">
                     <label for="city" class="form-label">City</label>
-                    <input city="text" class="form-control" id="city" name="city">
+                    <input city="text" class="form-control" id="city" name="city" value="{{coffees.city}}">
                 </div>
                 <div class="mb-3">
                     <label for="country" class="form-label">Country</label>
-                    <input type="text" class="form-control" id="country" name="country">
+                    <input type="text" class="form-control" id="country" name="country" value="{{coffees.country}}">
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">address</label>
-                    <input type="text" class="form-control" id="address" name="address">
+                    <input type="text" class="form-control" id="address" name="address" value="{{coffees.address}}">
                 </div>
 
 
-                <button type="submit" class="btn btn-dark">Save the New Coffeeshop</button>
+                <button type="submit" class="btn btn-dark">Save changes</button>
                 <a href="/coffees" class="btn btn-dark">Back to Coffeeshops</a>
             </form>
 

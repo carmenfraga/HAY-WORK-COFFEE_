@@ -1,0 +1,27 @@
+<div class="container">
+
+    <h1>{{name}}</h1>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Details</h3>
+            <img src="{{image}}" alt="coffeeshop image">
+            <p><strong>Address:</strong> {{address}}</p>
+        </div>
+
+    </div>
+
+    <hr>
+    <div class="coffees-btn">
+        <form action="/coffees/{{id}}/delete" method="POST">
+            <button class="btn btn-sm btn-warning" type="submit">Delete</button>
+        </form>
+        <a href="/coffees/{{id}}/edit" class="btn btn-sm btn-dark">Edit</a>
+
+        <a href="/coffees" class="btn btn-dark">Back to Coffeeshops</a>
+    </div>
+
+
+</div>
