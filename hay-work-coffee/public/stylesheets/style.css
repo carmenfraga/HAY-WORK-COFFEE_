@@ -1,9 +1,13 @@
-/* body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body {
+  font: 'Montserrat', Arial, sans-serif;
 }
 
-a {
+img {
+  width: 200px;
+
+}
+
+/* a {
   color: #00b7ff;
 }
 
@@ -19,7 +23,6 @@ main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: 'Montserrat', sans-serif;
   height: 100vh;
   margin: -20px 0 50px;
 }
@@ -50,7 +53,7 @@ button.ghost {
   border-color: #FFFFFF;
 }
 
-form {
+/* form {
   background-color: #FFFFFF;
   display: flex;
   align-items: center;
@@ -59,7 +62,7 @@ form {
   padding: 0 50px;
   height: 100%;
   text-align: center;
-}
+} */
 
 input {
   background-color: #eee;
@@ -67,4 +70,16 @@ input {
   padding: 12px 15px;
   margin: 8px 0;
   width: 100%;
+}
+
+footer {
+  background-color: #212529;
+  color: white;
+  text-align: center;
+  font-size: .7em;
+  padding: 5px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+
 }
