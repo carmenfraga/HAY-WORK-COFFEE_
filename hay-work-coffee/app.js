@@ -17,6 +17,7 @@ const app = express();
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
+require("./config/session.config")(app);
 
 // default value for title local
 const projectName = "hay-work-coffee";
@@ -30,14 +31,15 @@ app.use("/", index);
 const authRoutes = require("./routes/auth.routes");
 app.use("/", authRoutes);
 
+
 // const apiRoutes = require('./routes/api.routes');
 // app.use("/api", apiRoutes);
 
 const coffeeRoutes = require('./routes/coffees.routes');
 app.use("/", coffeeRoutes);
 
-// const userRoutes = require('./routes/user.routes')
-// app.use("/", userRoutes)
+const userRoutes = require('./routes/user.routes')
+app.use("/", userRoutes)
 
 
 

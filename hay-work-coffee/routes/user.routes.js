@@ -1,11 +1,21 @@
-// const router = require('express').Router()
+const User = require('../models/User.model')
+
+const router = require('express').Router()
 
 // const { isLoggedIn } = require('./../middleware/route-guard')
 
-// router.get('/profile', isLoggedIn, (req, res) => {
-//     res.render('user/profile', { user: req.session.currentUser })
-// })
+router.get('/profile/:id', (req, res, next) => {
 
-// module.exports = router
+    const {id} = req.params
+ 
+    User
+    .findById(id)
+    .then(user => {
+      res.render('user/profile', user)
+    })
+    .catch(err => next(err))
+})
+
+module.exports = router
 
 
