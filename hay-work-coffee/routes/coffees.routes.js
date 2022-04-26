@@ -1,6 +1,8 @@
 const router = require('express').Router();
 
 const Coffee = require('./../models/Coffee.model')
+const Experience = require('./../models/Experience.model')
+
 
 router.get('/coffees/new', (req, res, next) => {
     Coffee
@@ -31,17 +33,22 @@ router.get('/coffees', (req, res, next) => {
         })
         .catch(err => next(err))
 });
-
 router.get('/coffees/:id', (req, res, next) => {
 
     const { id } = req.params
 
-    Coffee
-        .findById(id)
-        .then(coffee => {
-            res.render('coffees/coffee-details', coffee)
+    const promises = [Coffee.findById(id), Experience.find({ coffee: id }).populate('owner')]
+
+    Promise
+        .all(promises)
+        .then(([coffeeRes, experiencesRes]) => {
+            // console.log('------------------>', experiencesRes)
+            res.render('coffees/coffee-details', { coffeeRes, experiencesRes })
+            // console.log('LA DEL CAFE', coffeeRes, 'LA DE LAS EXPERIENCIAS', experiencesRes)
         })
         .catch(err => next(err))
+
+
 })
 
 router.post('/coffees/:id/delete', (req, res, next) => {

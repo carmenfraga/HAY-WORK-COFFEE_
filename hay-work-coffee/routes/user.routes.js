@@ -15,12 +15,19 @@ router.get('/community', isLoggedIn, (req, res, next) => {
 })
 
 
-router.get('/profile/:id', (req, res, next) => {
+router.get('/profile', (req, res, next) => {
 
+<<<<<<< HEAD
   const { id } = req.params
 
   User
     .findById(id)
+=======
+  const { _id } = req.session.currentUser
+
+  User
+    .findById(_id)
+>>>>>>> 3b49993342b83bfeabb9bf23229ed27bebb7a60c
     .then(user => {
       res.render('user/profile', user)
     })

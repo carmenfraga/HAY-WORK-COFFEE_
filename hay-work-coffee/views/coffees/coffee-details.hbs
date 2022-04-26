@@ -1,27 +1,61 @@
 <div class="container">
-
-    <h1>{{name}}</h1>
-
-    <hr>
-
     <div class="row">
-        <div class="col-md-8">
-            <h3>Details</h3>
-            <img src="{{image}}" alt="coffeeshop image">
-            <p><strong>Address:</strong> {{address}}</p>
+        <div class="col-md-6">
+            <section class="container-experience">
+
+                <h1>{{coffeeRes.name}}</h1>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3>Details</h3>
+                        <img src="{{coffeeRes.image}}" alt="coffeeshop image">
+                        <p><strong>Address:</strong> {{coffeeRes.address}}</p>
+                    </div>
+
+                </div>
+
+                <hr>
+                <div class="coffees-btn">
+                    <form action="/coffees/{{coffeeRes.id}}/delete" method="POST">
+                        <button class="btn btn-sm btn-warning" type="submit">Delete</button>
+                    </form>
+                    <a href="/coffees/{{coffeeRes.id}}/edit" class="btn btn-sm btn-dark">Edit</a>
+
+                    <a href="/coffees" class="btn btn-dark">Back to Coffeeshops</a>
+                </div>
+            </section>
         </div>
+        {{!-- formulario description dentro de cafeterias(con id) --}}
 
+
+        <div class="col-md-6">
+            <form action="/coffees/{{coffeeRes.id}}/experience" method="POST">
+
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="description" name="description">
+                </div>
+
+                <button type="submit">Enviar</button>
+
+                {{!-- <div class="mb-3">
+                    <label for="coffee" class="form-label">coffee</label>
+                    <input type="text" class="form-control" id="coffee" name="coffee" value="{{id}}">
+                </div> --}}
+
+
+                <ul>
+                    {{#each experiencesRes}}
+                    <li>
+                        <p>{{description}}</p>
+                        <p>{{owner.username}}</p>
+                    </li>
+                    {{/each}}
+                </ul>
+            </form>
+        </div>
     </div>
-
-    <hr>
-    <div class="coffees-btn">
-        <form action="/coffees/{{id}}/delete" method="POST">
-            <button class="btn btn-sm btn-warning" type="submit">Delete</button>
-        </form>
-        <a href="/coffees/{{id}}/edit" class="btn btn-sm btn-dark">Edit</a>
-
-        <a href="/coffees" class="btn btn-dark">Back to Coffeeshops</a>
-    </div>
-
-
 </div>
