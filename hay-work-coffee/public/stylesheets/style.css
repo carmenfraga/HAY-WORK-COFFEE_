@@ -17,7 +17,7 @@ h1 {
 
 /* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800'); */
 
-main {
+/* main {
   background: #F6F5F7;
   display: flex;
   justify-content: center;
@@ -25,7 +25,7 @@ main {
   flex-direction: column;
   height: 100vh;
   margin: -20px 0 50px;
-}
+} */
 
 button {
   border-radius: 20px;

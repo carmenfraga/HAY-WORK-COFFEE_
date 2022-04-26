@@ -31,9 +31,8 @@ app.use("/", index);
 const authRoutes = require("./routes/auth.routes");
 app.use("/", authRoutes);
 
-
-// const apiRoutes = require('./routes/api.routes');
-// app.use("/api", apiRoutes);
+const apiRoutes = require('./routes/api.routes');
+app.use("/api", apiRoutes);
 
 const coffeeRoutes = require('./routes/coffees.routes');
 app.use("/", coffeeRoutes);

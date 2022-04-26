@@ -31,6 +31,8 @@ const coffeeSchema = new Schema(
     }
 )
 
+coffeeSchema.index({ location: '2dsphere' })
+
 const Coffee = mongoose.model('Coffee', coffeeSchema)
 Coffee.syncIndexes()
 module.exports = Coffee

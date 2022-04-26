@@ -1,19 +1,18 @@
 const isLoggedIn = (req, res, next) => {
-    console.log('---VAMOS A COMPROBAR LA SESIÓN---->', req.session)
-    !req.session.currentUser ? res.render('auth/log-in', { errorMessage: 'Log in to access' }) : next()
+    req.session.currentUser ? next() : res.render('auth/log-in', { errorMessage: 'Log In to Access' })
 }
-
-const isLoggedOut = (req, res, next) => {
-    req.session.currentUser ? res.redirect('/my-profile') : next()
-}
-
 
 // const checkRole = (...rolesToCheck) => (req, res, next) => {
 //     if (rolesToCheck.includes(req.session.currentUser.role)) {
 //         next()
 //     } else {
-//         res.render('auth/log-in', { errorMessage: 'No tienes permisos' })
+//         res.render('auth/log-in', { errorMessage: 'You do not have permissions' })
 //     }
 // }
 
-module.exports = { isLoggedIn, isLoggedOut }
+
+module.exports = { isLoggedIn }
+
+
+
+

@@ -13,10 +13,10 @@ router.get('/coffees/new', (req, res, next) => {
 
 router.post('/coffees/new', (req, res, next) => {
 
-    const { name, image, city, country, address } = req.body
+    const { name, image, city, country, address, latitude, longitude } = req.body
 
     Coffee
-        .create({ name, image, location: { city, country, address } })
+        .create({ name, image, address: { city, country, address, location: { type: "Point", coordinates: [latitude, longitude] } } })
         .then(() => {
             res.redirect('/coffees')
         })
@@ -72,10 +72,10 @@ router.get('/coffees/:id/edit', (req, res, next) => {
 router.post('/coffees/:id/edit', (req, res, next) => {
 
     const { id } = req.params
-    const { name, image, city, country, address } = req.body
+    const { name, image, city, country, address, latitude, longitude } = req.body
 
     Coffee
-        .findByIdAndUpdate(id, { name, image, location: { city, country, address } })
+        .findByIdAndUpdate(id, { name, image, address: { city, country, address, location: { type: "Point", coordinates: [latitude, longitude] } } })
         .then(() => {
             res.redirect('/coffees')
         })
