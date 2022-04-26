@@ -1,7 +1,8 @@
 | Method | URL | Description |
-| GET | / | Index/Home |
+| GET | / | Main APP view |
+| GET | /about | APP concept |
 | GET | /coffees/new | Render new-coffee view |
-| POST | /coffees/new | Create a new coffee |
+| POST | /coffees/new | Add a new coffee |
 | GET | /coffees | Render the coffees list |
 | GET | /coffees | Map |
 | GET | /coffees/:id | Coffee details |
