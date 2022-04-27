@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const fileUploader = require("../config/cloudinary.config")
 const Coffee = require('./../models/Coffee.model')
 const Experience = require('./../models/Experience.model')
 const Comment = require('./../models/Comment.model')
@@ -14,12 +14,13 @@ router.get('/coffees/new', (req, res, next) => {
         .catch(err => next(err))
 })
 
-router.post('/coffees/new', (req, res, next) => {
+router.post('/coffees/new', fileUploader.single('coffeeImage'), (req, res, next) => {
 
-    const { name, image, city, country, address, latitude, longitude } = req.body
+    const { name, address, latitude, longitude } = req.body
+    const { path } = req.file
 
     Coffee
-        .create({ name, image, address: { city, country, address, location: { type: "Point", coordinates: [latitude, longitude] } } })
+        .create({ name, image: path, address: { address, location: { type: "Point", coordinates: [latitude, longitude] } } })
         .then(() => {
             res.redirect('/coffees')
         })
@@ -102,13 +103,14 @@ router.get('/coffees/:id/edit', (req, res, next) => {
         .catch(err => next(err))
 })
 
-router.post('/coffees/:id/edit', (req, res, next) => {
+router.post('/coffees/:id/edit', fileUploader.single('coffeeImage'), (req, res, next) => {
 
     const { id } = req.params
-    const { name, image, city, country, address, latitude, longitude } = req.body
+    const { name, address, latitude, longitude } = req.body
+    const { path } = req.file
 
     Coffee
-        .findByIdAndUpdate(id, { name, image, address: { city, country, address, location: { type: "Point", coordinates: [latitude, longitude] } } })
+        .findByIdAndUpdate(id, { name, image: path, address: { address, location: { type: "Point", coordinates: [latitude, longitude] } } })
         .then(() => {
             res.redirect('/coffees')
         })

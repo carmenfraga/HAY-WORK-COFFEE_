@@ -13,9 +13,8 @@
                 <div class="row">
                     <div class="col-md-8">
                         <h3>Details</h3>
-
-                        <img src="{{image}}" alt="coffeeshop image">
-                        <p><strong>Address:</strong> {{address}}</p>
+                        <img src="{{coffeeRes.image}}" alt="{{coffeeRes.image}}">
+                        <p><strong>Address:</strong> {{coffeeRes.address}}</p>
                     </div>
 
                 </div>
@@ -41,11 +40,8 @@
 
 
                 <div class="mb-3">
-                    <label for="description">Coffee description</label>
-                    <textarea type="text" class="form-control" rows="5" id="description" name="description"
-                        placeholder="Please give us your experience"></textarea>
-                    {{!-- <label for="description" class="form-label">Description</label>
-                    <input type="text" class="form-control" id="description" name="description"> --}}
+                    <label for="description" class="form-label">Coffeeshopper Experiences</label>
+                    <input type="text" class="form-control" id="description" name="description">
                 </div>
 
                 <button type="submit">Send experience</button>
