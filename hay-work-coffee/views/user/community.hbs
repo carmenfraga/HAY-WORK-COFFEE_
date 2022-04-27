@@ -1,0 +1,25 @@
+<div class="container-list">
+
+    <h2>Coffeeshoppers! | The Community</h2>
+
+    <hr>
+
+    <h3>Discover the favorite work-places of other Coffeeshoppers!</h3>
+
+    <ul>
+        {{#each user}}
+        <li class="users-list">
+
+            <a href="/users/{{id}}">Check {{username}} Profile!</a>
+
+
+            <hr>
+        </li>
+        {{/each}}
+    </ul>
+
+
+
+    <a href="/" class="btn btn-dark">Inicio</a>
+
+</div>

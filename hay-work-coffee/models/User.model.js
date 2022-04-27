@@ -19,10 +19,9 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Password is required']
     },
-    avatar: {         //or profileImg
+    avatar: {
       type: String,
       default: 'https://i.stack.imgur.com/l60Hf.png'
-      //cloudinary path
     },
     description: {
       type: String,
@@ -33,7 +32,7 @@ const userSchema = new Schema(
       enum: ['ADMIN', 'USER'],
       default: 'USER'
     },
-    favCoffees: [{                                  // El corchete es necesario porque es un array de ObjectIDs
+    favCoffees: [{
       type: Schema.Types.ObjectId,
       ref: 'Coffee'
     }],

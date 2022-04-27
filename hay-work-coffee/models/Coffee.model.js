@@ -9,10 +9,9 @@ const coffeeSchema = new Schema(
             unique: true,
             required: [true, 'Name is required']
         },
-        image: {      //original photo
+        image: {
             type: String,
             default: 'https://i.stack.imgur.com/l60Hf.png'
-            //cloudinary path
         },
         address: {
             city: String,
