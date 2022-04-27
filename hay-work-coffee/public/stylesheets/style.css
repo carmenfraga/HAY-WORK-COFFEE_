@@ -83,3 +83,9 @@ footer {
   bottom: 0;
 
 }
+
+#coffeesMap {
+  height: 290px;
+  background-color: red;
+  width: 600px;
+}

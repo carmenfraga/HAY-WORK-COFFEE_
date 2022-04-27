@@ -37,6 +37,9 @@ app.use("/api", apiRoutes);
 const coffeeRoutes = require('./routes/coffees.routes');
 app.use("/", coffeeRoutes);
 
+const commentsRoutes = require('./routes/comments.routes')
+app.use("/", commentsRoutes)
+
 const userRoutes = require('./routes/user.routes')
 app.use("/", userRoutes)
 

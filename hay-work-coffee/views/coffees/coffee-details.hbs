@@ -3,59 +3,88 @@
         <div class="col-md-6">
             <section class="container-experience">
 
-                <h1>{{coffeeRes.name}}</h1>
+                {{#with coffeeInfo}}
+
+                <h1>{{name}}</h1>
+
 
                 <hr>
 
                 <div class="row">
                     <div class="col-md-8">
                         <h3>Details</h3>
-                        <img src="{{coffeeRes.image}}" alt="coffeeshop image">
-                        <p><strong>Address:</strong> {{coffeeRes.address}}</p>
+
+                        <img src="{{image}}" alt="coffeeshop image">
+                        <p><strong>Address:</strong> {{address}}</p>
                     </div>
 
                 </div>
 
                 <hr>
                 <div class="coffees-btn">
-                    <form action="/coffees/{{coffeeRes.id}}/delete" method="POST">
+                    <form action="/coffees/{{id}}/delete" method="POST">
                         <button class="btn btn-sm btn-warning" type="submit">Delete</button>
                     </form>
-                    <a href="/coffees/{{coffeeRes.id}}/edit" class="btn btn-sm btn-dark">Edit</a>
+                    <a href="/coffees/{{id}}/edit" class="btn btn-sm btn-dark">Edit</a>
 
                     <a href="/coffees" class="btn btn-dark">Back to Coffeeshops</a>
                 </div>
+                {{/with}}
             </section>
         </div>
+
         {{!-- formulario description dentro de cafeterias(con id) --}}
 
 
         <div class="col-md-6">
-            <form action="/coffees/{{coffeeRes.id}}/experience" method="POST">
+            <form action="/coffees/{{coffeeInfo.id}}/experience" method="POST">
 
 
                 <div class="mb-3">
-                    <label for="description" class="form-label">Description</label>
-                    <input type="text" class="form-control" id="description" name="description">
+                    <label for="description">Coffee description</label>
+                    <textarea type="text" class="form-control" rows="5" id="description" name="description"
+                        placeholder="Please give us your experience"></textarea>
+                    {{!-- <label for="description" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="description" name="description"> --}}
                 </div>
 
-                <button type="submit">Enviar</button>
-
-                {{!-- <div class="mb-3">
-                    <label for="coffee" class="form-label">coffee</label>
-                    <input type="text" class="form-control" id="coffee" name="coffee" value="{{id}}">
-                </div> --}}
-
-
-                <ul>
-                    {{#each experiencesRes}}
-                    <li>
-                        <p>{{description}}</p>
-                        <p>{{owner.username}}</p>
-                    </li>
-                    {{/each}}
-                </ul>
+                <button type="submit">Send experience</button>
             </form>
+
+            <ul>
+                {{#each experiences}}
+                <li>
+                    <p><a href="/">{{description}}</a></p>
+                    <p>{{owner.username}}</p>
+
+                    {{#each comments}}
+                    <p>{{description}}</p>
+                    {{/each}}
+
+                    {{!-- comentarios sobre experiencias --}}
+                    <form action="/coffees/{{../coffeeInfo.id}}/comments/{{_id}}" method="POST">
+
+                        <div class="mb-3">
+                            <label for="comments" class="form-label">Comments</label>
+                            <input type="text" class="form-control" id="comments" name="comments"
+                                placeholder="If you have any comments, please send your feedback. ">
+                        </div>
+
+                        <button type="submit">Send comment</button>
+                    </form>
+
+                </li>
+                {{/each}}
+            </ul>
+
+
+
+
+
+
         </div>
+
+
+
     </div>
 </div>
