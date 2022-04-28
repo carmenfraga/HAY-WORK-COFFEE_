@@ -1,22 +1,61 @@
 <div class="container-list">
+    <div class="row">
+        <div class="col-md-6">
 
-    <h2>Coffeeshops</h2>
-
-    <hr>
-
-    <ul>
-        {{#each coffees}}
-        <li class="coffees-list">
-            <a href="/coffees/{{id}}">{{name}}</a>
-            <img src="{{image}}" alt="{{name}}">
+            <h2>Coffeeshops</h2>
 
             <hr>
-        </li>
-        {{/each}}
-    </ul>
 
-    <a href="/" class="btn btn-dark">Back to Home page</a>
+            <ul>
+                {{#each coffees}}
+                <li class="coffees-list">
+                    <a href="/coffees/{{id}}">{{name}}</a>
+                    <img src="{{image}}" alt="{{name}}">
+
+                    <hr>
+                </li>
+                {{/each}}
+            </ul>
+
+            <a href="/" class="btn btn-dark">Back to Home page</a>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <figure id="coffeesMap"></figure>
+            <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
+            {{!--
+            <ul id="geoData">
+                <li>Nombre: <span id="name"></span></li>
+                <li>Direccion: <span id="location"></span></li>
+                <li>CP: <span id="postal_code"></span></li>
+                <li>Pais: <span id="country"></span></li>
+                <li>Latitud: <span id="lat"></span></li>
+                <li>Longitud: <span id="lon"></span></li>
+            </ul> --}}
+
+
+
+            <a href="/api/coffees" target="_blank">Mira la API!</a>
+
+        </div>
+
+
+    </div>
 
 </div>
 
 {{!-- Google Maps --}}
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./../js/coffees-map.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbHBgxM7Yx1HVvbifq4i0oq-1qIFnXSeY
+&callback=initMap"></script>
+{{!--
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbHBgxM7Yx1HVvbifq4i0oq-1qIFnXSeY&libraries=places&callback=initMap"
+    async defer></script> --}}

@@ -18,9 +18,12 @@ router.post('/coffees/new', fileUploader.single('coffeeImage'), (req, res, next)
 
     const { name, address, latitude, longitude } = req.body
     const { path } = req.file
+    lat = Number(latitude)
+    lng = Number(longitude)
+    let location = [lat, lng]
 
     Coffee
-        .create({ name, image: path, address: { address, location: { type: "Point", coordinates: [latitude, longitude] } } })
+        .create({ name, image: path, address: { address, location: { type: "Point", coordinates: location } } })
         .then(() => {
             res.redirect('/coffees')
         })
