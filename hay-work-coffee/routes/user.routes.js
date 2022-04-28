@@ -20,35 +20,25 @@ router.get('/community', isLoggedIn, (req, res, next) => {
 //My Profile
 router.get('/profile', isLoggedIn, (req, res, next) => {
 
-<<<<<<< HEAD
-router.get('/profile', (req, res, next) => {
-
-=======
->>>>>>> 74cd5b9b3884d024095c9b7c53696815581540e4
   const { _id } = req.session.currentUser
 
   User
     .findById(_id)
+    .populate('favCoffees')
     .then(user => {
-<<<<<<< HEAD
-      res.render('user/my-profile', user)
-=======
       res.render('user/my-profile', { user, thisUser: true })
->>>>>>> 74cd5b9b3884d024095c9b7c53696815581540e4
     })
     .catch(err => next(err))
 })
 
-module.exports = router
 
-//To access each Profile from Community
+//To access to each Profile from Community
 router.get('/users/:id', isLoggedIn, (req, res, next) => {
 
   const { id } = req.params
 
   User
     .findById(id)
-    .populate('coffee')
     .then(user => {
       res.render('user/my-profile', { user })
     })
@@ -78,11 +68,11 @@ router.get('/users/:id/edit', isLoggedIn, (req, res, next) => {
 router.post('/users/:id/edit', isLoggedIn, fileUploader.single('avatar'), (req, res, next) => {
 
   const { id } = req.params
-  const { username, email, description, favCoffees } = req.body
+  const { username, email, description } = req.body
   const { path } = req.file
 
   User
-    .findByIdAndUpdate(id, { username, email, avatar: path, description, favCoffees })
+    .findByIdAndUpdate(id, { username, email, avatar: path, description })
     .then(() => {
       res.redirect('/profile')
     })
@@ -104,5 +94,39 @@ router.post('/users/:id/delete', isLoggedIn, (req, res, next) => {
 
 });
 
+//Add to My Favorite Coffeeshops
+
+router.post('/users/:id/add-to-fav', isLoggedIn, (req, res, next) => {
+
+  const { id } = req.params
+  const thisUser = req.session.currentUser._id
+
+  User
+    .findByIdAndUpdate(thisUser, { $addToSet: { favCoffees: id } })
+    .then(() => {
+      res.redirect('/coffees')
+    })
+    .catch(err => next(err))
+
+});
+
+//Remove from My Favorite Coffeeshops
+
+router.post('/users/:id/remove-fav', isLoggedIn, (req, res, next) => {
+
+  const { id } = req.params
+  const thisUser = req.session.currentUser._id
+
+  User
+    .findByIdAndUpdate(thisUser, { $pull: { favCoffees: id } })
+    .then(() => {
+      res.redirect('/profile')
+    })
+    .catch(err => next(err))
+})
+
+
 module.exports = router
+
+
 

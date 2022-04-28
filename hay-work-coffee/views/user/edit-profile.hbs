@@ -25,15 +25,7 @@
                     <input type="text" class="form-control" id="description" name="description"
                         value="{{user.description}}">
                 </div>
-                <div class="mb-3">
-                    <label for="coffee" class="form-label">Favorite Coffeeshops</label>
-                    <select name="coffee" id="coffee">
-                        {{#each coffees}}
-                        <option value="{{id}}">{{name}}</option>
-                        {{/each}}
 
-                    </select>
-                </div>
 
                 <button type="submit" class="btn btn-dark">Save Changes</button>
                 <a href="/profile" class="btn btn-dark">Back to My Profile</a>

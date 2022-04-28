@@ -13,12 +13,18 @@
             <p><strong>Who is {{user.username}}?</strong> {{user.description}}</p>
             <div class="col-md-4">
                 <p><strong>Favorite Coffeeshops:</strong></p>
-                {{#each coffees}}
+
+                {{#each user.favCoffees}}
 
                 <p>{{name}}</p>
                 <img src="{{image}}" alt="{{name}}">
-                <p>{{address}}</p>
-
+                {{!-- <p>{{address}}</p> --}}
+                <form action="/coffees/{{id}}">
+                    <button class="btn btn-dark">Check the Coffeeshop!</button>
+                </form>
+                <form action="/users/{{id}}/remove-fav" method="POST">
+                    <button class="btn btn-sm btn-warning" type="submit">Remove from Favorites</button>
+                </form>
                 {{/each}}
             </div>
         </div>

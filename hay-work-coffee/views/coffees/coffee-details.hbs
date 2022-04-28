@@ -21,6 +21,9 @@
 
                 <hr>
                 <div class="coffees-btn">
+                    <form action="/users/{{id}}/add-to-fav" method="POST">
+                        <button class="btn btn-sm btn-warning" type="submit">Add to My Favorite Coffeeshops</button>
+                    </form>
                     <form action="/coffees/{{id}}/delete" method="POST">
                         <button class="btn btn-sm btn-warning" type="submit">Delete</button>
                     </form>
