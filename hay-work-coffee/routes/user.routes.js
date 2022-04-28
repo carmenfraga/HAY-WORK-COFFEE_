@@ -20,21 +20,12 @@ router.get('/community', isLoggedIn, (req, res, next) => {
 //My Profile
 router.get('/profile', isLoggedIn, (req, res, next) => {
 
-<<<<<<< HEAD
-router.get('/profile', (req, res, next) => {
-
-=======
->>>>>>> 74cd5b9b3884d024095c9b7c53696815581540e4
   const { _id } = req.session.currentUser
 
   User
     .findById(_id)
     .then(user => {
-<<<<<<< HEAD
-      res.render('user/my-profile', user)
-=======
       res.render('user/my-profile', { user, thisUser: true })
->>>>>>> 74cd5b9b3884d024095c9b7c53696815581540e4
     })
     .catch(err => next(err))
 })

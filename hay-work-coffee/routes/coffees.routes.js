@@ -1,11 +1,14 @@
-const router = require('express').Router();
+const router = require('express').Router()
 const fileUploader = require("../config/cloudinary.config")
 const Coffee = require('./../models/Coffee.model')
 const Experience = require('./../models/Experience.model')
 const Comment = require('./../models/Comment.model')
 
+const { isLoggedIn, checkRole } = require('./../middlewares/route-guard')
+
 
 router.get('/coffees/new', (req, res, next) => {
+
     Coffee
         .find()
         .then(coffees => {
@@ -35,7 +38,8 @@ router.get('/coffees', (req, res, next) => {
         })
         .catch(err => next(err))
 });
-router.get('/coffees/:id', (req, res, next) => {
+
+router.get('/coffees/:id', isLoggedIn, (req, res, next) => {
 
 
     const { id } = req.params
@@ -46,10 +50,13 @@ router.get('/coffees/:id', (req, res, next) => {
     const promises = [promise1, promise2]
 
     const viewInfo = {}
+    const isAdmin = req.session.currentUser.role === 'ADMIN'
 
     Promise
         .all(promises)
         .then(([coffeeRes, experiencesRes]) => {
+
+
 
             const comments = experiencesRes.map(eachExperience => {
                 return Comment.find({ experience: eachExperience._id })
@@ -65,9 +72,11 @@ router.get('/coffees/:id', (req, res, next) => {
             viewInfo.experiences = viewInfo.experiences.map((eachExperience, idx) => {
                 return { ...eachExperience._doc, comments: allComments[idx] }
             })
-            console.log('LA VIEWINFO ---->', viewInfo)
+            // console.log('LA VIEWINFO ---->', viewInfo)
             // res.json(viewInfo)
-            res.render('coffees/coffee-details', viewInfo)
+
+            // res.render('coffees/coffee-details', viewInfo)
+            res.render('coffees/coffee-details', {viewInfo, isAdmin})
         })
 
         // console.log('LOS COMENTARIOS------------------>', comments)
@@ -78,26 +87,29 @@ router.get('/coffees/:id', (req, res, next) => {
 
 })
 
-router.post('/coffees/:id/delete', (req, res, next) => {
+router.post('/coffees/:id/delete', checkRole('ADMIN'), (req, res, next) => {
 
     const { id } = req.params
 
     Coffee
         .findByIdAndDelete(id)
         .then(() => {
+
             res.redirect('/coffees')
         })
         .catch(err => next(err))
 
 });
 
-router.get('/coffees/:id/edit', (req, res, next) => {
+router.get('/coffees/:id/edit', checkRole('ADMIN'), (req, res, next) => {
 
     const { id } = req.params
+
 
     Coffee
         .findById(id)
         .then(coffees => {
+
             res.render('coffees/edit-coffee', { coffees })
         })
         .catch(err => next(err))
