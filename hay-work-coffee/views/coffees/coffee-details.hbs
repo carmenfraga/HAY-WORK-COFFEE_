@@ -7,7 +7,6 @@
 
                 <h1>{{name}}</h1>
 
-
                 <hr>
 
                 <div class="row">
@@ -31,14 +30,17 @@
 
                     {{/if}}
 
+                    <form action="/users/{{id}}/add-to-fav" method="POST">
+                        <button class="btn btn-sm btn-warning" type="submit">Add to my Favorite Coffeeshops</button>
+                    </form>
+
                     <a href="/coffees" class="btn btn-dark">Back to Coffeeshops</a>
                 </div>
                 {{/with}}
             </section>
         </div>
 
-        {{!-- formulario description dentro de cafeterias(con id) --}}
-
+        {{!-- Coffeeshop User-experience --}}
 
         <div class="col-md-6">
             <form action="/coffees/{{viewInfo.coffeeInfo.id}}/experience" method="POST">
@@ -52,6 +54,8 @@
                 <button type="submit">Send experience</button>
             </form>
 
+            {{!-- Comment to Coffeeshop User-experience --}}
+
             <ul>
                 {{#each viewInfo.experiences}}
                 <li>
@@ -62,7 +66,6 @@
                     <p>{{description}}</p>
                     {{/each}}
 
-                    {{!-- comentarios sobre experiencias --}}
                     <form action="/coffees/{{../coffeeInfo.id}}/comments/{{_id}}" method="POST">
 
                         <div class="mb-3">
@@ -78,14 +81,6 @@
                 {{/each}}
             </ul>
 
-
-
-
-
-
         </div>
-
-
-
     </div>
 </div>

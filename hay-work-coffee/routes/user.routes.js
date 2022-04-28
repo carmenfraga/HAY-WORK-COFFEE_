@@ -6,11 +6,13 @@ const Coffee = require('./../models/Coffee.model')
 
 const { isLoggedIn } = require('./../middlewares/route-guard')
 
-// Coffeeshopers Community 
+// Coffeeshoppers Community 
+
 router.get('/community', isLoggedIn, (req, res, next) => {
 
   User
     .find()
+    .select('username avatar')
     .then(user => {
       res.render('user/community', { user })
     })
@@ -18,6 +20,7 @@ router.get('/community', isLoggedIn, (req, res, next) => {
 })
 
 //My Profile
+
 router.get('/profile', isLoggedIn, (req, res, next) => {
 
   const { _id } = req.session.currentUser
@@ -31,8 +34,8 @@ router.get('/profile', isLoggedIn, (req, res, next) => {
     .catch(err => next(err))
 })
 
-
 //To access to each Profile from Community
+
 router.get('/users/:id', isLoggedIn, (req, res, next) => {
 
   const { id } = req.params
@@ -45,7 +48,6 @@ router.get('/users/:id', isLoggedIn, (req, res, next) => {
     .catch(err => next(err))
 })
 
-
 // Edit My Profile
 
 router.get('/users/:id/edit', isLoggedIn, (req, res, next) => {
@@ -55,12 +57,7 @@ router.get('/users/:id/edit', isLoggedIn, (req, res, next) => {
   User
     .findById(id)
     .then(user => {
-      Coffee
-        .find()
-        .then(coffees => {
-          res.render('user/edit-profile', { user, coffees })
-        })
-
+      res.render('user/edit-profile', user)
     })
     .catch(err => next(err))
 })

@@ -4,7 +4,7 @@ const User = require("../models/User.model")
 const saltRounds = 10;
 
 
-// sign-up:
+// Sign Up
 
 router.get("/sign-up", (req, res, next) => {
     res.render("auth/sign-up");
@@ -23,7 +23,7 @@ router.post("/sign-up", (req, res, next) => {
 
 })
 
-//log-in
+//Log In
 
 router.get("/log-in", (req, res, next) => {
     res.render("auth/log-in");
@@ -58,7 +58,7 @@ router.post('/log-in', (req, res, next) => {
 
 })
 
-//log-out
+//Log Out
 
 router.post('/log-out', (req, res, next) => {
 

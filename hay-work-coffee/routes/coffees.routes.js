@@ -6,16 +6,13 @@ const Comment = require('./../models/Comment.model')
 
 const { isLoggedIn, checkRole } = require('./../middlewares/route-guard')
 
+//Render New Coffeeshop Form
 
 router.get('/coffees/new', (req, res, next) => {
-
-    Coffee
-        .find()
-        .then(coffees => {
-            res.render('coffees/new-coffee', { coffees })
-        })
-        .catch(err => next(err))
+    res.render('coffees/new-coffee')
 })
+
+//Create New Coffeeshop Form
 
 router.post('/coffees/new', fileUploader.single('coffeeImage'), (req, res, next) => {
 
@@ -30,17 +27,22 @@ router.post('/coffees/new', fileUploader.single('coffeeImage'), (req, res, next)
         .catch(err => next(err))
 })
 
+//Render All Coffeeshops 
+
 router.get('/coffees', (req, res, next) => {
+
     Coffee
         .find()
+        .select('name image')
         .then(coffees => {
             res.render('coffees/coffees', { coffees })
         })
         .catch(err => next(err))
 });
 
-router.get('/coffees/:id', isLoggedIn, (req, res, next) => {
+//Coffeeshop Details
 
+router.get('/coffees/:id', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
@@ -56,11 +58,7 @@ router.get('/coffees/:id', isLoggedIn, (req, res, next) => {
         .all(promises)
         .then(([coffeeRes, experiencesRes]) => {
 
-
-
-            const comments = experiencesRes.map(eachExperience => {
-                return Comment.find({ experience: eachExperience._id })
-            })
+            const comments = experiencesRes.map(eachExperience => Comment.find({ experience: eachExperience._id }))
 
             viewInfo.coffeeInfo = coffeeRes
             viewInfo.experiences = experiencesRes
@@ -72,20 +70,13 @@ router.get('/coffees/:id', isLoggedIn, (req, res, next) => {
             viewInfo.experiences = viewInfo.experiences.map((eachExperience, idx) => {
                 return { ...eachExperience._doc, comments: allComments[idx] }
             })
-            // console.log('LA VIEWINFO ---->', viewInfo)
-            // res.json(viewInfo)
 
-            // res.render('coffees/coffee-details', viewInfo)
-            res.render('coffees/coffee-details', {viewInfo, isAdmin})
+            res.render('coffees/coffee-details', { viewInfo, isAdmin })
         })
-
-        // console.log('LOS COMENTARIOS------------------>', comments)
-        // res.render('coffees/coffee-details', { coffeeRes, experiencesRes, commentsMapped })
-        // console.log('LA DEL CAFE', coffeeRes, 'LA DE LAS EXPERIENCIAS', experiencesRes)
         .catch(err => next(err))
-
-
 })
+
+//Delete a Coffeeshop (only ADMIN can do it)
 
 router.post('/coffees/:id/delete', checkRole('ADMIN'), (req, res, next) => {
 
@@ -94,26 +85,26 @@ router.post('/coffees/:id/delete', checkRole('ADMIN'), (req, res, next) => {
     Coffee
         .findByIdAndDelete(id)
         .then(() => {
-
             res.redirect('/coffees')
         })
         .catch(err => next(err))
 
-});
+})
+
+//Edit a Coffeeshop (only ADMIN can do it)
 
 router.get('/coffees/:id/edit', checkRole('ADMIN'), (req, res, next) => {
 
     const { id } = req.params
 
-
     Coffee
         .findById(id)
         .then(coffees => {
-
             res.render('coffees/edit-coffee', { coffees })
         })
         .catch(err => next(err))
 })
+
 
 router.post('/coffees/:id/edit', fileUploader.single('coffeeImage'), (req, res, next) => {
 

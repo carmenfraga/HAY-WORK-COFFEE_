@@ -1,10 +1,8 @@
-// crud
-// popular coffe y user:
 const router = require('express').Router()
 const Experience = require('./../models/Experience.model')
 
 
-// cometrios sobre cafetería:
+//Create a Coffeeshop User-experience
 
 router.post('/coffees/:id/experience', (req, res, next) => {
 
@@ -21,8 +19,6 @@ router.post('/coffees/:id/experience', (req, res, next) => {
         .catch(err => console.log(err))
 
 })
-
-
 
 
 

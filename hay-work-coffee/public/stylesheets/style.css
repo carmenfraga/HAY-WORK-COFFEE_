@@ -1,25 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font: 'Montserrat', Arial, sans-serif;
+  background-color: #212529;
 }
 
 img {
   width: 200px;
-
+  cursor: pointer;
 }
 
-#coffeeImage {
-  width: 200px;
+.home {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/bg-img.jpg');
+  background-size: cover;
+  height: 100vh;
 }
 
-/* a {
-  color: #00b7ff;
+.appTitle {
+  display: flex;
+  justify-content: center;
+  padding-top: 190px;
+  color: linen;
+  text-transform: uppercase;
+  font-size: xxx-large;
+  padding-left: 460px;
 }
 
-h1 {
-  color: 15px;
-} */
-
-/* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800'); */
+.about {
+  color: linen;
+}
 
 /* main {
   background: #F6F5F7;
@@ -78,14 +94,17 @@ input {
 
 footer {
   background-color: #212529;
-  color: white;
+  color: linen;
   text-align: center;
   font-size: .7em;
-  padding: 5px;
   position: fixed;
   width: 100%;
   bottom: 0;
 
+}
+
+footer p {
+  margin-top: 10px;
 }
 
 #coffeesMap {

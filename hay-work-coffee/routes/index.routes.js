@@ -1,19 +1,13 @@
 const router = require("express").Router();
 
-/* GET home page */
+//Home & About views
+
 router.get("/", (req, res, next) => {
-  res.render("index");
-});
+  res.render("home")
+})
 
-
-/* GET about page */
 router.get("/about", (req, res, next) => {
+  res.render("about")
+})
 
-  res.render("about");
-  
-});
-
-
-module.exports = router;
-
-
+module.exports = router

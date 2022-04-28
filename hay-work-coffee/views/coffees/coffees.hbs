@@ -7,7 +7,10 @@
     <ul>
         {{#each coffees}}
         <li class="coffees-list">
-            <a href="/coffees/{{id}}">{{name}} | {{image}}</a>
+            <a href="/coffees/{{id}}">{{name}}</a>
+            <img src="{{image}}" alt="{{name}}">
+
+            <hr>
         </li>
         {{/each}}
     </ul>
@@ -17,13 +20,3 @@
 </div>
 
 {{!-- Google Maps --}}
-
-<figure id="coffeesMap"></figure>
-
-<a href="/api/coffees" target="_blank">Mira la API!</a>
-
-
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="./../js/coffees-map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbHBgxM7Yx1HVvbifq4i0oq-1qIFnXSeY
-&callback=initMap"></script>
