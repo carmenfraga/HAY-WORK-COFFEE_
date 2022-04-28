@@ -88,8 +88,16 @@ footer {
 
 }
 
+#map {
+  height: 290px;
+  background-color: red;
+  width: 400px;
+  height: 450px;
+}
+
 #coffeesMap {
   height: 290px;
   background-color: red;
-  width: 600px;
+  width: 400px;
+  height: 450px;
 }
