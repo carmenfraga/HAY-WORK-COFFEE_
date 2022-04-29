@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
             <h2>Add a New Coffeeshop</h2>
@@ -17,11 +17,11 @@
                     <input type="text" class="form-control" id="address" name="address">
                 </div>
 
-                <label for="latitude" class="form-label">LAT</label>
-                <input type="text" class="form-control" id="lat" name="latitude">
+                <label hidden for="latitude" class="form-label">LAT</label>
+                <input hidden type="text" class="form-control" id="lat" name="latitude">
 
-                <label for="longitude" class="form-label">LEN</label>
-                <input type="text" class="form-control" id="lon" name="longitude">
+                <label hidden for="longitude" class="form-label">LEN</label>
+                <input hidden type="text" class="form-control" id="lon" name="longitude">
 
 
                 <button type="submit" class="btn btn-dark">Save the New Coffeeshop</button>
@@ -33,13 +33,13 @@
             <figure id="map"></figure>
             <input id="searchInput" class="controls" type="text" placeholder="Enter a location">
 
-            <ul id="geoData">
+            <ul hidden id="geoData">
                 <li>Nombre: <span id="name"></span></li>
                 <li>Direccion: <span id="location"></span></li>
                 <li>CP: <span id="postal_code"></span></li>
                 <li>Pais: <span id="country"></span></li>
-                {{!-- <li>Latitud: <span id="lat"></span></li>
-                <li>Longitud: <span id="lon"></span></li> --}}
+                <li>Latitud: <span id="lat"></span></li>
+                <li>Longitud: <span id="lon"></span></li>
             </ul>
         </div>
     </div>

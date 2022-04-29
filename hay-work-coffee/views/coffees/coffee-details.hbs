@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-md-8">
                         <h3>Details</h3>
-                        <img src="{{image}}" alt="coffee image">
+                        <img id="coffee-details-img" src="{{image}}" alt="coffee image">
                         <p><strong>Address:</strong> {{address}}</p>
                     </div>
 
@@ -21,18 +21,20 @@
                 <hr>
                 <div class="coffees-btn">
 
-                    {{#if ../isAdmin}}
-
-                    <form action="/coffees/{{id}}/delete" method="POST">
-                        <button class="btn btn-sm btn-warning" type="submit">Delete</button>
+                    <form action="/users/{{id}}/add-to-fav" method="POST">
+                        <button class="btn btn-sm btn-warning m-1" type="submit">Add to my Favorite Coffeeshops</button>
                     </form>
-                    <a href="/coffees/{{id}}/edit" class="btn btn-sm btn-dark">Edit</a>
+
+
+                    {{#if ../isAdmin}}
+                    <a href="/coffees/{{id}}/edit" class="btn btn-dark btn-md text-white m-1">Edit</a>
+                    <form action="/coffees/{{id}}/delete" method="POST">
+                        <button class="btn btn-md btn-secondary" type="submit">Delete</button>
+                    </form>
+
 
                     {{/if}}
 
-                    <form action="/users/{{id}}/add-to-fav" method="POST">
-                        <button class="btn btn-sm btn-warning" type="submit">Add to my Favorite Coffeeshops</button>
-                    </form>
 
                     <a href="/coffees" class="btn btn-dark">Back to Coffeeshops</a>
                 </div>

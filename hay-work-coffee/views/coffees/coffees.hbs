@@ -1,4 +1,4 @@
-<div class="container-list">
+<div class="container mt-3">
     <div class="row">
         <div class="col-md-6">
 
@@ -6,18 +6,19 @@
 
             <hr>
 
-            <ul>
-                {{#each coffees}}
-                <li class="coffees-list">
-                    <a href="/coffees/{{id}}">{{name}}</a>
-                    <img src="{{image}}" alt="{{name}}">
+            {{#each coffees}}
 
-                    <hr>
-                </li>
-                {{/each}}
-            </ul>
+            <div class="mb-5 d-flex justify-content-center">
+                <div class="card bg-white" style="width: 18rem;">
+                    <img class="mb-2" src="{{image}}" class="card-img-top" alt="{{name}}">
+                    <div class="card-body">
+                        <a class="card-title btn btn-dark mb-2 p-2" href="/coffees/{{id}}">{{name}}</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
 
-            <a href="/" class="btn btn-dark">Back to Home page</a>
+            <a href="/" class="btn btn-dark">Home</a>
 
         </div>
 
@@ -37,7 +38,7 @@
 
 
 
-            <a href="/api/coffees" target="_blank">Mira la API!</a>
+            <a href="/api/coffees" target="_blank"></a>
 
         </div>
 

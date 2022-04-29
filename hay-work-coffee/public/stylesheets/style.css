@@ -5,12 +5,24 @@
 
 body {
   font: 'Montserrat', Arial, sans-serif;
-  background-color: #212529;
+  background-color: rgb(246, 230, 238);
+  color: #212529;
 }
 
-img {
-  width: 200px;
-  cursor: pointer;
+
+.about-img {
+  border-radius: 15px;
+  width: 460px;
+}
+
+#coffee-details-img {
+  width: 300px;
+  border-radius: 20px;
+}
+
+.about-text {
+  font-size: 18px;
+  margin-top: 40px;
 }
 
 .home {
@@ -27,14 +39,14 @@ img {
   display: flex;
   justify-content: center;
   padding-top: 190px;
-  color: linen;
+  color: rgb(246, 230, 238);
   text-transform: uppercase;
   font-size: xxx-large;
   padding-left: 460px;
 }
 
 .about {
-  color: linen;
+  font-size: 50px;
 }
 
 /* main {
@@ -49,8 +61,8 @@ img {
 
 button {
   border-radius: 20px;
-  border: 1px solid #FF4B2B;
-  background-color: #FF4B2B;
+  border: 1px solid rgb(251, 230, 240);
+  background-color: #212529;
   color: #FFFFFF;
   font-size: 12px;
   font-weight: bold;
