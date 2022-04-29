@@ -42,6 +42,7 @@ router.get('/users/:id', isLoggedIn, (req, res, next) => {
 
   User
     .findById(id)
+    .populate('favCoffees')
     .then(user => {
       res.render('user/my-profile', { user })
     })

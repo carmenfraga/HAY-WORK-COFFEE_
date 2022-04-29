@@ -1,62 +1,35 @@
-<div class="container mt-3">
+<div class="container pt-4">
     <div class="row">
         <div class="col-md-6">
-
             <h2>Coffeeshops</h2>
-
             <hr>
+            <div class="row">
 
-            {{#each coffees}}
-
-            <div class="mb-5 d-flex justify-content-center">
-                <div class="card bg-white" style="width: 18rem;">
-                    <img class="mb-2" src="{{image}}" class="card-img-top" alt="{{name}}">
-                    <div class="card-body">
-                        <a class="card-title btn btn-dark mb-2 p-2" href="/coffees/{{id}}">{{name}}</a>
+                {{#each coffees}}
+                <div class="col-md-6 mb-5">
+                    <div class="card">
+                        <img class="mb-2 card-img" src="{{image}}" class="card-img-top" alt="{{name}}"
+                            style="width: 100%">
+                        <div class="card-body">
+                            <a class="card-title btn btn-dark mb-2 p-2" href="/coffees/{{id}}">{{name}}</a>
+                        </div>
                     </div>
                 </div>
+                {{/each}}
+
             </div>
-            {{/each}}
-
             <a href="/" class="btn btn-dark">Home</a>
-
         </div>
-
-        <div class="col-md-6">
-
+        <div class="col-md-6 pt-5 mapCenter">
             <figure id="coffeesMap"></figure>
-            {{!-- <input id="searchInput" class="controls" type="text" placeholder="Enter a location"> --}}
-            {{!--
-            <ul id="geoData">
-                <li>Nombre: <span id="name"></span></li>
-                <li>Direccion: <span id="location"></span></li>
-                <li>CP: <span id="postal_code"></span></li>
-                <li>Pais: <span id="country"></span></li>
-                <li>Latitud: <span id="lat"></span></li>
-                <li>Longitud: <span id="lon"></span></li>
-            </ul> --}}
-
-
-
             <a href="/api/coffees" target="_blank"></a>
-
         </div>
-
-
     </div>
-
 </div>
 
 {{!-- Google Maps --}}
 
-
-
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="./../js/coffees-map.js"></script>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbHBgxM7Yx1HVvbifq4i0oq-1qIFnXSeY
 &callback=initMap"></script>
-{{!--
-<script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbHBgxM7Yx1HVvbifq4i0oq-1qIFnXSeY&libraries=places&callback=initMap"
-    async defer></script> --}}

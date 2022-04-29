@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pt-3">
     <div class="row">
         <div class="col-md-6">
             <section class="container-experience">
@@ -14,10 +14,8 @@
                         <div class="col-md-8">
                             <h3>Details</h3>
                             <img id="coffee-details-img" src="{{image}}" alt="coffee image">
-                            <p><strong>Address:</strong> {{address}}</p>
+                            <p><strong>Address:</strong> {{address.address}}</p>
                         </div>
-
-
                     </div>
 
                     <hr>
@@ -27,7 +25,7 @@
                             <button class="btn btn-sm btn-warning m-1" type="submit">Add to my Favorite
                                 Coffeeshops</button>
                         </form>
-
+                        <a href="/coffees" class="btn btn-dark mt-2">Back to Coffeeshops</a>
 
                         {{#if ../isAdmin}}
                         <a href="/coffees/{{id}}/edit" class="btn btn-dark btn-md text-white m-1">Edit</a>
@@ -38,8 +36,6 @@
 
                         {{/if}}
 
-
-                        <a href="/coffees" class="btn btn-dark">Back to Coffeeshops</a>
                     </div>
                     {{/with}}
             </section>
@@ -52,7 +48,9 @@
 
 
                 <div class="mb-3">
-                    <label for="description" class="form-label">Coffeeshopper Experiences</label>
+                    <label for="description" class="form-label btn"
+                        style="font-size: 35px; color:rgb(255 193 7); font-weight:600">Coffeeshopper
+                        Experiences</label>
                     <input type="text" class="form-control" id="description" name="description">
                 </div>
 
@@ -74,7 +72,9 @@
                     <form action="/coffees/{{../coffeeInfo.id}}/comments/{{_id}}" method="POST">
 
                         <div class="mb-3">
-                            <label for="comments" class="form-label">Comments</label>
+                            <label for="comments" class="form-label" style="font-size: 25px; font-weight:600">Comment on
+                                your Friends
+                                Experiences</label>
                             <input type="text" class="form-control" id="comments" name="comments"
                                 placeholder="If you have any comments, please send your feedback. ">
                         </div>

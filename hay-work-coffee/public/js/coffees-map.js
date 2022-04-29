@@ -14,8 +14,8 @@ function renderMap() {
     map = new Map(
         document.querySelector('#coffeesMap'),
         {
-            center: { lat: 40.392499, lng: -3.698214 },
-            zoom: 17,
+            center: { lat: 40.418086207028765, lng: - 3.7031749569643813 },
+            zoom: 13,
         }
     )
 }

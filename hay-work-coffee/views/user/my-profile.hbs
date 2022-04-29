@@ -1,49 +1,39 @@
 <div class="container pt-5">
-
     <h1>{{user.username}} | Profile</h1>
-
     <hr>
-
     <div class="row">
         <div class="col-md-4">
             <img src="{{user.avatar}}" alt="{{user.username}}" style="width: 100%">
+
+            {{#if thisUser}}
+            <div class="d-flex justify-content-center pt-2">
+
+                <a class="btn btn-dark btn-md text-white m-1" href="/users/{{user.id}}/edit">Edit My Profile</a>
+                <form action="/users/{{user.id}}/delete" method="POST">
+                    <button class="btn btn-md btn-secondary m-1" type="submit">Delete My Profile</button>
+                </form>
+            </div>
+            {{/if}}
+
         </div>
         <div class="col-md-8">
             <h3>Info</h3>
             <p><strong>Who is {{user.username}}?</strong> {{user.description}}</p>
-            <div class="col-md-4">
+            <div class="col-md-4 fav-coffees">
                 <p><strong>Favorite Coffeeshops:</strong></p>
 
                 {{#each user.favCoffees}}
 
                 <p>{{name}}</p>
                 <img src="{{image}}" alt="{{name}}">
-                {{!-- <p>{{address}}</p> --}}
                 <form action="/coffees/{{id}}">
                     <button class="btn btn-dark">Check the Coffeeshop!</button>
                 </form>
                 <form action="/users/{{id}}/remove-fav" method="POST">
-                    <button class="btn btn-sm btn-warning" type="submit">Remove from Favorites</button>
+                    <button class="btn btn-sm btn-secondary" type="submit">Remove from Favorites</button>
                 </form>
                 {{/each}}
             </div>
         </div>
-
-
     </div>
-
-    {{#if thisUser}}
-    <div class="d-flex justify-content-center">
-
-        <a class="btn btn-dark btn-md text-white m-5" href="/users/{{user.id}}/edit">Edit My Profile</a>
-        <form action="/users/{{user.id}}/delete" method="POST">
-            <button class="btn btn-md btn-secondary m-5" type="submit">Delete My Profile</button>
-        </form>
-    </div>
-
-    {{/if}}
-
-
-
-
 </div>

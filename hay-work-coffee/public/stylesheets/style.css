@@ -9,6 +9,9 @@ body {
   color: #212529;
 }
 
+img {
+  width: 285px;
+}
 
 .about-img {
   border-radius: 15px;
@@ -49,15 +52,14 @@ body {
   font-size: 50px;
 }
 
-/* main {
-  background: #F6F5F7;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  margin: -20px 0 50px;
-} */
+li {
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(28, 65, 30);
+}
 
 button {
   border-radius: 20px;
@@ -84,17 +86,6 @@ button.ghost {
   background-color: transparent;
   border-color: #FFFFFF;
 }
-
-/* form {
-  background-color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 50px;
-  height: 100%;
-  text-align: center;
-} */
 
 input {
   background-color: #eee;
@@ -131,4 +122,21 @@ footer p {
   background-color: red;
   width: 400px;
   height: 450px;
+}
+
+.card-img {
+  width: 100% !important;
+}
+
+.card {
+  width: 100% !important;
+}
+
+.mapCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.fav-coffees {
+  margin-bottom: 100px;
 }
