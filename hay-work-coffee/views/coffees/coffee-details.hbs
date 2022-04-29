@@ -11,43 +11,37 @@
 
                 <div class="row">
                     <div class="col-md-6">
-
-                        <div class="card">
-                            <div class="card-body">
-                                <h3>Details</h3>
-                                <p><strong>Address:</strong> {{address}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="image">
-                            <div class="card-body">
-                                <img src="{{image}}" alt="coffee image">
-                            </div>
+                        <div class="col-md-8">
+                            <h3>Details</h3>
+                            <img id="coffee-details-img" src="{{image}}" alt="coffee image">
+                            <p><strong>Address:</strong> {{address}}</p>
                         </div>
 
+
                     </div>
-                </div>
 
-                <hr>
-                <div class="coffees-btn">
+                    <hr>
+                    <div class="coffees-btn">
 
-                    {{#if ../isAdmin}}
+                        <form action="/users/{{id}}/add-to-fav" method="POST">
+                            <button class="btn btn-sm btn-warning m-1" type="submit">Add to my Favorite
+                                Coffeeshops</button>
+                        </form>
 
-                    <form action="/coffees/{{id}}/delete" method="POST">
-                        <button class="btn btn-sm btn-warning" type="submit">Delete</button>
-                    </form>
-                    <a href="/coffees/{{id}}/edit" class="btn btn-sm btn-dark">Edit</a>
 
-                    {{/if}}
+                        {{#if ../isAdmin}}
+                        <a href="/coffees/{{id}}/edit" class="btn btn-dark btn-md text-white m-1">Edit</a>
+                        <form action="/coffees/{{id}}/delete" method="POST">
+                            <button class="btn btn-md btn-secondary" type="submit">Delete</button>
+                        </form>
 
-                    <form action="/users/{{id}}/add-to-fav" method="POST">
-                        <button class="btn btn-sm btn-warning" type="submit">Add to my Favorite Coffeeshops</button>
-                    </form>
 
-                    <a href="/coffees" class="btn btn-dark">Back to Coffeeshops</a>
-                </div>
-                {{/with}}
+                        {{/if}}
+
+
+                        <a href="/coffees" class="btn btn-dark">Back to Coffeeshops</a>
+                    </div>
+                    {{/with}}
             </section>
         </div>
 

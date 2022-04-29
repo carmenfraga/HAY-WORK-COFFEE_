@@ -1,4 +1,39 @@
-<div class="container-list">
+<div class="container pt-3">
+
+    <h1 class="d-flex justify-content-center">Coffeeshoppers! | The Community</h1>
+    <hr>
+    <h3 class="d-flex justify-content-center mb-3">Discover the favorite work-places of other Coffeeshoppers!</h3>
+
+
+    <div class="row">
+
+        {{#each user}}
+        <div class="col-md-4 mb-5 d-flex justify-content-center">
+            <div class="card bg-white" style="width: 18rem;">
+                <img class="" src="{{avatar}}" class="card-img-top" alt="{{username}}">
+                <div class="card-body">
+                    <a class="btn btn-secondary d-flex justify-content-center mb-1 btn-lg"
+                        href="/users/{{id}}">{{username}}
+                        <br> Check Profile!</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+        <div class="d-flex justify-content-center">
+
+            <a href="/" class="btn btn-dark mb-1 btn-md">Home</a>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+{{!-- <div class="container pt-3 pl-3">
 
     <h2>Coffeeshoppers! | The Community</h2>
 
@@ -10,7 +45,7 @@
         {{#each user}}
         <li class="users-list">
 
-            <a href="/users/{{id}}">Check {{username}} Profile!</a>
+            <a class="btn bg-dark btn-md text-white" href="/users/{{id}}">Check {{username}} Profile!</a>
             <img src="{{avatar}}" alt="{{username}}">
 
             <hr>
@@ -20,6 +55,6 @@
 
 
 
-    <a href="/" class="btn btn-dark">Inicio</a>
+    <a href="/" class="btn btn-dark mb-1 btn-lg d-flex justify-content-center">Home</a>
 
-</div>
+</div> --}}

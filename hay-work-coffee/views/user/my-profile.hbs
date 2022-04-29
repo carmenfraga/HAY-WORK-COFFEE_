@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pt-5">
 
     <h1>{{user.username}} | Profile</h1>
 
@@ -33,10 +33,13 @@
     </div>
 
     {{#if thisUser}}
-    <a href="/users/{{user.id}}/edit">Edit My Profile</a>
-    <form action="/users/{{user.id}}/delete" method="POST">
-        <button class="btn btn-sm btn-warning" type="submit">Delete My Profile</button>
-    </form>
+    <div class="d-flex justify-content-center">
+
+        <a class="btn btn-dark btn-md text-white m-5" href="/users/{{user.id}}/edit">Edit My Profile</a>
+        <form action="/users/{{user.id}}/delete" method="POST">
+            <button class="btn btn-md btn-secondary m-5" type="submit">Delete My Profile</button>
+        </form>
+    </div>
 
     {{/if}}
 
