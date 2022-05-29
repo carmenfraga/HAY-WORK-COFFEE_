@@ -1,4 +1,5 @@
 | Method | URL | Description |
+|-------------|-------------|-------------|
 | GET | / | Main APP view |
 | GET | /about | APP concept |
 | GET | /coffees/new | Render new-coffee view |
@@ -19,6 +20,7 @@
 | GET | /log-in | Log In |
 | POST | /log-in | Log In |
 | POST | /log-out | Log Out |
+
 
 
 
